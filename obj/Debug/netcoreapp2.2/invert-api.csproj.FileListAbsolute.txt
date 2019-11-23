@@ -1,0 +1,16 @@
+/Users/beshoyhanna/invert-api/obj/Debug/netcoreapp2.2/invert-api.csprojAssemblyReference.cache
+/Users/beshoyhanna/invert-api/obj/Debug/netcoreapp2.2/invert-api.RazorAssemblyInfo.cache
+/Users/beshoyhanna/invert-api/obj/Debug/netcoreapp2.2/invert-api.RazorAssemblyInfo.cs
+/Users/beshoyhanna/invert-api/obj/Debug/netcoreapp2.2/invert-api.AssemblyInfoInputs.cache
+/Users/beshoyhanna/invert-api/obj/Debug/netcoreapp2.2/invert-api.AssemblyInfo.cs
+/Users/beshoyhanna/invert-api/obj/Debug/netcoreapp2.2/invert-api.RazorTargetAssemblyInfo.cache
+/Users/beshoyhanna/invert-api/obj/Debug/netcoreapp2.2/invert-api.dll
+/Users/beshoyhanna/invert-api/obj/Debug/netcoreapp2.2/invert-api.pdb
+/Users/beshoyhanna/invert-api/bin/Debug/netcoreapp2.2/appsettings.Development.json
+/Users/beshoyhanna/invert-api/bin/Debug/netcoreapp2.2/appsettings.json
+/Users/beshoyhanna/invert-api/bin/Debug/netcoreapp2.2/Properties/launchSettings.json
+/Users/beshoyhanna/invert-api/bin/Debug/netcoreapp2.2/invert-api.deps.json
+/Users/beshoyhanna/invert-api/bin/Debug/netcoreapp2.2/invert-api.runtimeconfig.json
+/Users/beshoyhanna/invert-api/bin/Debug/netcoreapp2.2/invert-api.runtimeconfig.dev.json
+/Users/beshoyhanna/invert-api/bin/Debug/netcoreapp2.2/invert-api.dll
+/Users/beshoyhanna/invert-api/bin/Debug/netcoreapp2.2/invert-api.pdb
