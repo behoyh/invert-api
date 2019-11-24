@@ -1,0 +1,56 @@
+﻿<Properties StartupConfiguration="{67C433F2-4A57-4F8F-9479-73F5CF385A91}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Domains/GetMessages.cs">
+    <Files>
+      <File FileName="Services/MessagesService.cs" Line="14" Column="31" />
+      <File FileName="Models/MessageType.cs" Line="8" Column="20" />
+      <File FileName="Domains/GetMessages.cs" Line="14" Column="8" />
+      <File FileName="Controllers/MessagesController.cs" />
+      <File FileName="Startup.cs" Line="21" Column="31" />
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName=".gitignore" />
+      <File FileName="Infrastructure/InteractiveMessagesContextFactory.cs" Line="1" Column="1" />
+      <File FileName="docker-compose.yml" Line="12" Column="63" />
+      <File FileName="docker-compose.override.yml" Line="1" Column="1" />
+      <File FileName="Dockerfile" Line="21" Column="1" />
+      <File FileName="appsettings.json" Line="1" Column="1" />
+      <File FileName="appsettings.Development.json" Line="11" Column="135" />
+      <File FileName="README.md" Line="1" Column="1" />
+      <File FileName="Repositories/GetMessagesRepository.cs" Line="22" Column="10" />
+      <File FileName="Repositories/PostNewMessageRepository.cs" Line="36" Column="17" />
+      <File FileName="Models/Response/Response.cs" Line="13" Column="28" />
+      <File FileName="Models/TargetMessage.cs" Line="1" Column="1" />
+      <File FileName="Repositories/UpdateMessageRepository.cs" Line="1" Column="1" />
+      <File FileName="Repositories/DeleteMessageRepository.cs" Line="1" Column="1" />
+      <File FileName="Domains/AddOrUpdateMessage.cs" Line="7" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="invert-api" expanded="True">
+            <Node name="Solution Items" expanded="True" />
+            <Node name="docker-compose" expanded="True" />
+            <Node name="invert-api" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Domains" expanded="True">
+                <Node name="GetMessages.cs" selected="True" />
+              </Node>
+              <Node name="Infrastructure" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/beshoyhanna/invert-api/Infrastructure/InteractiveMessagesContext.cs" relfile="Infrastructure/InteractiveMessagesContext.cs" line="43" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.invert-api PreferredExecutionTarget="/Applications/Safari.app" />
+</Properties>

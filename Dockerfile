@@ -9,10 +9,10 @@ COPY invert-api.csproj ./
 RUN dotnet restore "./invert-api.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "invert-api.csproj" -c Release -o /app/build
+RUN dotnet build "invert-api.csproj" -c Development -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "invert-api.csproj" -c Release -o /app/publish
+RUN dotnet publish "invert-api.csproj" -c Development -o /app/publish
 
 FROM base AS final
 WORKDIR /app

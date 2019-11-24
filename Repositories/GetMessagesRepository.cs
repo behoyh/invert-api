@@ -6,23 +6,26 @@ using Dapper;
 using invert_api.Infrastructure;
 using invert_api.Models;
 using invert_api.Models.Response;
+using Microsoft.Extensions.Configuration;
 
 namespace invert_api.Repositories
 {
     public class GetMessagesRepository
     {
-        private readonly InteractiveMessagesContextFactory _interactiveMessagesContextFactory;
-        public GetMessagesRepository(InteractiveMessagesContextFactory interactiveMessagesContextFactory)
+        private readonly IConfiguration _configuration;
+        public GetMessagesRepository(IConfiguration configuration)
         {
-            _interactiveMessagesContextFactory = interactiveMessagesContextFactory;
+            _configuration = configuration;
         }
 
         public async Task<Response<IEnumerable<MESSAGE>>> GetAllMessagesAsync()
         {
+            var query = "SELECT * FROM MESSAGES WHERE ACTIVE = 1;";
+
             IEnumerable<MESSAGE> messages;
-            using (var context = _interactiveMessagesContextFactory.GetContext())
+            using (var context = InteractiveMessagesContextFactory.GetContext(_configuration.GetConnectionString("TargetDB")))
             {
-                messages = await context.QueryAsync<MESSAGE>("SELECT ACTIVE = 1");
+                messages = await context.QueryAsync<MESSAGE>(query);
             }
 
             if (messages == null || !messages.Any())
@@ -37,7 +40,7 @@ namespace invert_api.Repositories
         {
             IEnumerable<TARGET_MESSAGE> targetedMessages;
 
-            using (var context = _interactiveMessagesContextFactory.GetContext())
+            using (var context = InteractiveMessagesContextFactory.GetContext(_configuration.GetConnectionString("TargetDB")))
             {
                 targetedMessages = await context.QueryAsync<TARGET_MESSAGE>("ENDDATE < @EndDate, UID = @Uid", new { EndDate = DateTime.Now, Uid });
             }

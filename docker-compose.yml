@@ -6,3 +6,12 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    depends_on:
+        - sql-server
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
+    environment:
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=yourStrong(!)Password
+    ports:
+        - 1433:1433

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using DbUp;
 using invert_api.Domains;
 using invert_api.Infrastructure;
@@ -17,7 +18,7 @@ namespace invert_api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
+            Console.WriteLine(Configuration.GetConnectionString("TargetDB"));
             MigrateDB();
         }
 
@@ -67,9 +68,9 @@ namespace invert_api
         private void MigrateDB()
         {
             //var config = new ConfigurationBuilder()
-              //  .AddEnvironmentVariables("CUSTOM_")
-                //.Build();
-            var connectionString = Configuration.GetValue<string>("ConnectionString", "Server=(local);Database=INTERACTIVE_MESSAGES;User Id=sa;Password=yourStrong(!)Password;MultipleActiveResultSets=true");
+            //  .AddEnvironmentVariables("CUSTOM_")
+            //.Build();
+            var connectionString = Configuration.GetConnectionString("TargetDB");
             
             EnsureDatabase.For.SqlDatabase(connectionString);
 

@@ -361,3 +361,4 @@ MigrationBackup/
 *.xml
 
 bin/
+obj/

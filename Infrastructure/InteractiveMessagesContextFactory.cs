@@ -1,26 +1,15 @@
 ﻿using System;
-using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
 
 namespace invert_api.Infrastructure
 {
-    public class InteractiveMessagesContextFactory : IDisposable
+    public class InteractiveMessagesContextFactory
     {
-        private readonly InteractiveMessagesContext _interactiveMessagesContext;
-        public InteractiveMessagesContextFactory(IConfiguration configuration)
+        public static SqlConnection GetContext(string connectionString)
         {
-            _interactiveMessagesContext = new InteractiveMessagesContext();
-            _interactiveMessagesContext.ConnectionString = configuration.GetConnectionString("TargetDB");
-        }
-
-        public InteractiveMessagesContext GetContext()
-        {
-            return _interactiveMessagesContext;
-        }
-
-        public void Dispose()
-        {
-            _interactiveMessagesContext.Close();
-            _interactiveMessagesContext.Dispose();
+            var sqlConnection = new SqlConnection(connectionString);
+            sqlConnection.Open();
+            return sqlConnection;
         }
     }
 }
