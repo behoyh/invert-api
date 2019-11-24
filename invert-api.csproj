@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <RootNamespace>invert_api</RootNamespace>
+    <DockerComposeProjectPath>docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>74c37f14-7f2c-4a43-8f9f-6d1b7a0273d1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +15,8 @@
       <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,5 +27,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
+    <Folder Include="Models\" />
+    <Folder Include="Domains\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Models\Request\" />
+    <Folder Include="Models\Response\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

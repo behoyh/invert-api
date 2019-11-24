@@ -1,5 +1,9 @@
 ﻿using System.Reflection;
 using DbUp;
+using invert_api.Domains;
+using invert_api.Infrastructure;
+using invert_api.Repositories;
+using invert_api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +27,16 @@ namespace invert_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddSwaggerGen(swagger =>
+            {
+                swagger.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My First Swagger" });
+            });
+            
+            services.AddScoped(typeof(MessagesService), typeof(MessagesService));
+            services.AddScoped(typeof(GetMessages), typeof(GetMessages));
+            services.AddScoped(typeof(GetMessagesRepository), typeof(GetMessagesRepository));
+            services.AddScoped(typeof(InteractiveMessagesContextFactory), typeof(InteractiveMessagesContextFactory));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +53,15 @@ namespace invert_api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My First Swagger");
+            });
+
             app.UseMvc();
+
         }
 
         private void MigrateDB()
