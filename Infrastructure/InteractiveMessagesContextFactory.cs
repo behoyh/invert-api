@@ -1,9 +1,8 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace invert_api.Infrastructure
 {
-    public class InteractiveMessagesContextFactory
+    public class InteractiveMessagesFactory
     {
         public static SqlConnection GetContext(string connectionString)
         {

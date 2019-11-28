@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using invert_api.Domains;
 using invert_api.Models;
@@ -9,11 +10,13 @@ namespace invert_api.Services
     public class MessagesService
     {
 
-        GetMessages _getMessages;
+        private readonly GetMessages _getMessages;
+        private readonly AddOrUpdateMessage _addOrUpdateMessage;
 
-        public MessagesService(GetMessages getMessages)
+        public MessagesService(GetMessages getMessages, AddOrUpdateMessage addOrUpdateMessage)
         {
             _getMessages = getMessages;
+            _addOrUpdateMessage = addOrUpdateMessage;
         }
 
         public async Task<Response<MessagesResponse>> GetAllMessages(string uid)
@@ -33,6 +36,30 @@ namespace invert_api.Services
             }
 
             return new Response<MessagesResponse>(messages.Data);
+        }
+
+        public async Task<Response<long>> AddOrUpdateMessage(MESSAGE message)
+        {
+            var result = await _addOrUpdateMessage.AddOrUpdateAsync(message);
+
+            if (!result.Success)
+            {
+                return new Response<long>(result.Error);
+            }
+
+            return new Response<long>(result.Data);
+        }
+
+        public async Task<Response> AddTargetedList(List<TARGET_MESSAGE> targets)
+        {
+            var result = await _addOrUpdateMessage.AddTargetedList(targets);
+
+            if (!result.Success)
+            {
+                return new Response(result.Error);
+            }
+
+            return new Response();
         }
     }
 }

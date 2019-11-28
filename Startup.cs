@@ -18,7 +18,6 @@ namespace invert_api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            Console.WriteLine(Configuration.GetConnectionString("TargetDB"));
             MigrateDB();
         }
 
@@ -31,13 +30,16 @@ namespace invert_api
 
             services.AddSwaggerGen(swagger =>
             {
-                swagger.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My First Swagger" });
+                swagger.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "Invert API" });
             });
             
             services.AddScoped(typeof(MessagesService), typeof(MessagesService));
             services.AddScoped(typeof(GetMessages), typeof(GetMessages));
+            services.AddScoped(typeof(AddOrUpdateMessage), typeof(AddOrUpdateMessage));
             services.AddScoped(typeof(GetMessagesRepository), typeof(GetMessagesRepository));
-            services.AddScoped(typeof(InteractiveMessagesContextFactory), typeof(InteractiveMessagesContextFactory));
+            services.AddScoped(typeof(UpdateMessageRepository), typeof(UpdateMessageRepository));
+            services.AddScoped(typeof(InsertMessageRepository), typeof(InsertMessageRepository));
+            services.AddScoped(typeof(InteractiveMessagesFactory), typeof(InteractiveMessagesFactory));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,11 +60,10 @@ namespace invert_api
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My First Swagger");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Invert API");
             });
 
             app.UseMvc();
-
         }
 
         private void MigrateDB()
@@ -70,7 +71,7 @@ namespace invert_api
             //var config = new ConfigurationBuilder()
             //  .AddEnvironmentVariables("CUSTOM_")
             //.Build();
-            var connectionString = Configuration.GetConnectionString("TargetDB");
+            var connectionString = Configuration.GetConnectionString("Master");
             
             EnsureDatabase.For.SqlDatabase(connectionString);
 

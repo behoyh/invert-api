@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <RootNamespace>invert_api</RootNamespace>
-    <DockerComposeProjectPath>docker-compose.dcproj</DockerComposeProjectPath>
     <UserSecretsId>74c37f14-7f2c-4a43-8f9f-6d1b7a0273d1</UserSecretsId>
   </PropertyGroup>
 

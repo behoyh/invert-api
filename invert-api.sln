@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-api", "invert-api.csproj", "{67C433F2-4A57-4F8F-9479-73F5CF385A91}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81EA3527-6A61-429C-86B2-C7899798F79D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BCE692C1-85EF-4310-92DA-09B9826EBCF2}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -20,9 +18,5 @@ Global
 		{67C433F2-4A57-4F8F-9479-73F5CF385A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67C433F2-4A57-4F8F-9479-73F5CF385A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67C433F2-4A57-4F8F-9479-73F5CF385A91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81EA3527-6A61-429C-86B2-C7899798F79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81EA3527-6A61-429C-86B2-C7899798F79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81EA3527-6A61-429C-86B2-C7899798F79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81EA3527-6A61-429C-86B2-C7899798F79D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
