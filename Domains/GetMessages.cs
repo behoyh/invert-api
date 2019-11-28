@@ -17,6 +17,11 @@ namespace invert_api.Domains
 
         public async Task<Response<MessagesResponse>> GetMesssgesForUser(string uid, params MessageType[] messageTypes)
         {
+            if(!messageTypes.Any())
+            {
+                return new Response<MessagesResponse>("must include at least one type.");
+            }
+
             var result = await _getMessagesRepository.GetAllMessagesAsync();
 
             if (!result.Success)
@@ -34,16 +39,11 @@ namespace invert_api.Domains
             var response = new MessagesResponse();
 
             var item = new MessageType();
-            while (messageTypesList.Count() != 0)
-            {
-                response.Banner = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypesList.Dequeue()));
-                item = messageTypesList.Dequeue(); response.Popup = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
-                item = messageTypesList.Dequeue(); response.Acknowledgment = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
-                item = messageTypesList.Dequeue(); response.Marketing = messages.Where(x => x.TYPE == item).Take(3).ToList();
-                item = messageTypesList.Dequeue(); response.Banner = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
-                // Add more if needed.
-            }
-            
+            response.Banner = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypesList.Dequeue()));
+            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Popup = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
+            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Acknowledgment = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
+            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Marketing = messages.Where(x => x.TYPE == item).Take(3).ToList();
+            // Add more if needed.
             
 
             var messagesResponse = response;
