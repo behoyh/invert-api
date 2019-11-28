@@ -16,10 +16,20 @@ namespace invert_api.Controllers
             _service = service;
         }
 
-        [HttpPost("all")]
+        [HttpPost("user")]
         public async Task<ObjectResult> GetAllMessages([FromBody]Request<string> uid)
         {
-            var result = await _service.GetAllMessages(uid.Data);
+            var result = await _service.GetMessagesForUser(uid.Data);
+
+            if (result.Success) return Ok(result.Data);
+
+            else return NotFound(result.Error);
+        }
+
+        [HttpGet("all")]
+        public async Task<ObjectResult> GetAllMessages()
+        {
+            var result = await _service.GetAllMessages();
 
             if (result.Success) return Ok(result.Data);
 

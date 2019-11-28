@@ -40,6 +40,13 @@ namespace invert_api
             services.AddScoped(typeof(UpdateMessageRepository), typeof(UpdateMessageRepository));
             services.AddScoped(typeof(InsertMessageRepository), typeof(InsertMessageRepository));
             services.AddScoped(typeof(InteractiveMessagesFactory), typeof(InteractiveMessagesFactory));
+
+            services.AddCors(o => o.AddPolicy("dev", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +55,8 @@ namespace invert_api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseCors("dev");
             }
             else
             {
