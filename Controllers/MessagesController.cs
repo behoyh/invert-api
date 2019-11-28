@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using invert_api.Models;
+using invert_api.Models.Request;
 using invert_api.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace invert_api.Controllers
 {
@@ -17,13 +16,32 @@ namespace invert_api.Controllers
             _service = service;
         }
 
-        // GET api/values/5
-        [HttpGet("all/{id}")]
-        public async Task<ObjectResult> GetAllMessages(string uid)
+        [HttpPost("all")]
+        public async Task<ObjectResult> GetAllMessages([FromBody]Request<string> uid)
         {
-            var result = await _service.GetAllMessages(uid);
+            var result = await _service.GetAllMessages(uid.Data);
 
             if (result.Success) return Ok(result.Data);
+
+            else return NotFound(result.Error);
+        }
+
+        [HttpPost("update")]
+        public async Task<ObjectResult> AddOrUpdateMessage([FromBody]Request<MESSAGE> message)
+        {
+            var result = await _service.AddOrUpdateMessage(message.Data);
+
+            if (result.Success) return Ok(result.Data);
+
+            else return NotFound(result.Error);
+        }
+
+        [HttpPost("add-list")]
+        public async Task<ObjectResult> AddTargetedList([FromBody] Request<List<TARGET_MESSAGE>> targetedList)
+        {
+            var result = await _service.AddTargetedList(targetedList.Data);
+
+            if (result.Success) return Ok(true);
 
             else return NotFound(result.Error);
         }

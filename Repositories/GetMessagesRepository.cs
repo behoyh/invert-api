@@ -12,23 +12,23 @@ namespace invert_api.Repositories
 {
     public class GetMessagesRepository
     {
-        private readonly IConfiguration _configuration;
+        private readonly string _connectionString;
         public GetMessagesRepository(IConfiguration configuration)
         {
-            _configuration = configuration;
+            _connectionString = configuration.GetConnectionString("Master");
         }
 
         public async Task<Response<IEnumerable<MESSAGE>>> GetAllMessagesAsync()
         {
-            var query = "SELECT * FROM MESSAGES WHERE ACTIVE = 1;";
+            var query = $"SELECT * FROM MESSAGES WHERE ACTIVE = 1 AND ENDDATE > @Date";
 
             IEnumerable<MESSAGE> messages;
-            using (var context = InteractiveMessagesContextFactory.GetContext(_configuration.GetConnectionString("TargetDB")))
+            using (var context = InteractiveMessagesFactory.GetContext(_connectionString))
             {
-                messages = await context.QueryAsync<MESSAGE>(query);
+                messages = await context.QueryAsync<MESSAGE>(query, new { Date = DateTime.Now });
             }
 
-            if (messages == null || !messages.Any())
+            if (messages == null)
             {
                 return new Response<IEnumerable<MESSAGE>>("Query returned no results");
             }
@@ -36,13 +36,13 @@ namespace invert_api.Repositories
             return new Response<IEnumerable<MESSAGE>>(messages);
         }
 
-        public async Task<Response<IEnumerable<TARGET_MESSAGE>>> GetTargetedMessagesForUser(string Uid)
+        public async Task<Response<IEnumerable<TARGET_MESSAGE>>> GetTargetedMessagesForUserAsync(string Uid)
         {
             IEnumerable<TARGET_MESSAGE> targetedMessages;
 
-            using (var context = InteractiveMessagesContextFactory.GetContext(_configuration.GetConnectionString("TargetDB")))
+            using (var context = InteractiveMessagesFactory.GetContext(_connectionString))
             {
-                targetedMessages = await context.QueryAsync<TARGET_MESSAGE>("ENDDATE < @EndDate, UID = @Uid", new { EndDate = DateTime.Now, Uid });
+                targetedMessages = await context.QueryAsync<TARGET_MESSAGE>("select UID = @Uid", new { Uid });
             }
 
             if (targetedMessages == null || !targetedMessages.Any())

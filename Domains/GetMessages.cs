@@ -43,7 +43,7 @@ namespace invert_api.Domains
         {
             var combinedMessages = new List<MESSAGE>();
 
-           var targets = await _getMessagesRepository.GetTargetedMessagesForUser(uid);
+           var targets = await _getMessagesRepository.GetTargetedMessagesForUserAsync(uid);
 
             if (!targets.Data.Any())
             {
