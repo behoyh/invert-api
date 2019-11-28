@@ -23,7 +23,7 @@ namespace invert_api.Domains
         {
             long Id;
 
-            if (message.ID >= 0)
+            if (message.ID == 0)
             {
                 var result = await _insertMessageRepository.UploadMessageAsync(message);
 
