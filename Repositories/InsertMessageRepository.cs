@@ -25,7 +25,7 @@ namespace invert_api.Repositories
                 result = await context.InsertAsync(message);
             }
 
-            if (result > 0)
+            if (result < 0)
             {
                 return new Response<long>("Insert Message Failed.");
             }
