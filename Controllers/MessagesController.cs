@@ -47,7 +47,7 @@ namespace invert_api.Controllers
         }
 
         [HttpPost("add-list")]
-        public async Task<ObjectResult> AddTargetedList([FromBody] Request<List<TARGET_MESSAGE>> targetedList)
+        public async Task<ObjectResult> AddTargetedList([FromBody] Request<TargetRequest> targetedList)
         {
             var result = await _service.AddTargetedList(targetedList.Data);
 

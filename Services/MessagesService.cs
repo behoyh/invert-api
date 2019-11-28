@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using invert_api.Domains;
 using invert_api.Models;
+using invert_api.Models.Request;
 using invert_api.Models.Response;
 
 namespace invert_api.Services
@@ -62,7 +63,7 @@ namespace invert_api.Services
             return new Response<long>(result.Data);
         }
 
-        public async Task<Response> AddTargetedList(List<TARGET_MESSAGE> targets)
+        public async Task<Response> AddTargetedList(TargetRequest targets)
         {
             var result = await _addOrUpdateMessage.AddTargetedList(targets);
 
