@@ -15,7 +15,7 @@ namespace invert_api.Domains
             _getMessagesRepository = getMessagesRepository;
         }
 
-        public async Task<Response<MessagesResponse>> GetAllMesssges(string uid, params MessageType[] messageTypes)
+        public async Task<Response<MessagesResponse>> GetMesssgesForUser(string uid, params MessageType[] messageTypes)
         {
             var result = await _getMessagesRepository.GetAllMessagesAsync();
 
@@ -28,15 +28,36 @@ namespace invert_api.Domains
 
             messages = await GetTargetedMesages(uid, messages);
 
-            var messagesResponse = new MessagesResponse()
+            var messageTypesList = new Queue<MessageType>(messageTypes);
+
+
+            var response = new MessagesResponse();
+
+            while (messageTypesList.Any())
             {
-                Banner = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypes[0])),
-                Popup = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypes[1])),
-                Acknowledgment = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypes[2])),
-                Marketing = messages.Where(x => x.TYPE == messageTypes[3]).Take(3).ToList()
-            };
+                response.Banner = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypesList.Dequeue()));
+                response.Popup = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypesList.Dequeue()));
+                response.Acknowledgment = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypesList.Dequeue()));
+                response.Marketing = messages.Where(x => x.TYPE == messageTypesList.Dequeue()).Take(3).ToList();
+                // Add more if needed.
+                break;
+            }
+
+            var messagesResponse = response;
 
             return new Response<MessagesResponse>(messagesResponse);
+        }
+
+        public async Task<Response<List<MESSAGE>>> GetAllMesssges()
+        {
+            var result = await _getMessagesRepository.GetAllMessagesAsync();
+
+            if (!result.Success)
+            {
+                return new Response<List<MESSAGE>>("Error Getting Messages");
+            }
+
+            return new Response<List<MESSAGE>>(result.Data.ToList());
         }
 
         private async Task<IEnumerable<MESSAGE>> GetTargetedMesages(string uid, IEnumerable<MESSAGE> messages)

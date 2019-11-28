@@ -19,23 +19,35 @@ namespace invert_api.Services
             _addOrUpdateMessage = addOrUpdateMessage;
         }
 
-        public async Task<Response<MessagesResponse>> GetAllMessages(string uid)
+        public async Task<Response<MessagesResponse>> GetMessagesForUser(string uid)
         {
-           var messages = await _getMessages.GetAllMesssges(uid,
-               new MessageType[]
-               {
+            var messages = await _getMessages.GetMesssgesForUser(uid,
+                new MessageType[]
+                {
                    MessageType.Banner,
                    MessageType.Popup,
                    MessageType.Acknowledgement,
                    MessageType.Marketing
-               });
+                });
 
-            if(!messages.Success)
+            if (!messages.Success)
             {
                 return new Response<MessagesResponse>(messages.Error);
             }
 
             return new Response<MessagesResponse>(messages.Data);
+        }
+
+        public async Task<Response<List<MESSAGE>>> GetAllMessages()
+        {
+            var messages = await _getMessages.GetAllMesssges();
+
+            if (!messages.Success)
+            {
+                return new Response<List<MESSAGE>>(messages.Error);
+            }
+
+            return new Response<List<MESSAGE>>(messages.Data);
         }
 
         public async Task<Response<long>> AddOrUpdateMessage(MESSAGE message)
@@ -61,5 +73,5 @@ namespace invert_api.Services
 
             return new Response();
         }
-    }
+    } 
 }

@@ -1,13 +1,22 @@
 version: '3.4'
 
 services:
+  invert-ui:
+    image: behoyh/invert-ui
+    depends_on: 
+        - invert-api
+    ports:
+        - "8080:80"
   invert-api:
     image: behoyh/invert-api
     build:
-      context: .
-      dockerfile: ./Dockerfile
+        context: .
+        dockerfile: ./Dockerfile
     depends_on:
         - sql-server
+    ports:
+        - "5000:80"
+        - "5001:443"
   sql-server:
     image: mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
     environment:
