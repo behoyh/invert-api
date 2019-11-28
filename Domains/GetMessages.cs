@@ -33,15 +33,18 @@ namespace invert_api.Domains
 
             var response = new MessagesResponse();
 
-            while (messageTypesList.Any())
+            var item = new MessageType();
+            while (messageTypesList.Count() != 0)
             {
                 response.Banner = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypesList.Dequeue()));
-                response.Popup = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypesList.Dequeue()));
-                response.Acknowledgment = GetPriorityMessageOfType(messages.Where(x => x.TYPE == messageTypesList.Dequeue()));
-                response.Marketing = messages.Where(x => x.TYPE == messageTypesList.Dequeue()).Take(3).ToList();
+                item = messageTypesList.Dequeue(); response.Popup = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
+                item = messageTypesList.Dequeue(); response.Acknowledgment = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
+                item = messageTypesList.Dequeue(); response.Marketing = messages.Where(x => x.TYPE == item).Take(3).ToList();
+                item = messageTypesList.Dequeue(); response.Banner = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
                 // Add more if needed.
-                break;
             }
+            
+            
 
             var messagesResponse = response;
 
