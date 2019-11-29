@@ -12,7 +12,7 @@ There are four types of messages by default:
 
 - 1 - Popups. Popups are useful sometimes to convey messages that must be seen, such as changing terms of service.
 
-- 2 - Marketing. Marketing messages are just ads, but first party ones (so they can sell you MORE stuff).
+- 2 - Marketing Ads.
 
 - 3 - Login. Login alerts are something you’ll see even before you authenticate into an app. These will let you know if the system is down for whatever reason, or force an upgrade from an older version.
 
