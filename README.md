@@ -16,7 +16,7 @@ There are four types of messages by default:
 
 - 3 - Login. Login alerts are something you’ll see even before you authenticate into an app. These will let you know if the system is down for whatever reason, or force an upgrade from an older version.
 
-These can be customized/extended to suit your needs.
+This list can be customized/extended to suit your needs.
 
 
 The UI for managing these messages is currently under development at - [invert-ui](https://github.com/behoyh/invert-ui)
