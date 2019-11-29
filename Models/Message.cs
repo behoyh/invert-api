@@ -10,6 +10,7 @@ namespace invert_api.Models
         public bool ISTARGETED { get; set; }
         public string TITLE { get; set; }
         public string BODY { get; set; }
+        public string LINK { get; set; }
         public string IMAGE { get; set; }
         public DateTime STARTDATE { get; set; }
         public DateTime ENDDATE { get; set; }
