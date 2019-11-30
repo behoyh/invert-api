@@ -92,7 +92,11 @@ namespace invert_api
 
             var result = upgrader.PerformUpgrade();
 
-            // Do something with result
+
+            if (!result.Successful)
+            {
+                throw result.Error;
+            }
         }
     }
 }
