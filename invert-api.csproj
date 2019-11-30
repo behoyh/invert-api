@@ -21,9 +21,11 @@
 
   <ItemGroup>
     <None Remove="Scripts\INIT_0001.sql" />
+    <None Remove="Scripts\LOGIN_MESSAGE_0002.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\INIT_0001.sql" />
+    <EmbeddedResource Include="Scripts\LOGIN_MESSAGE_0002.sql" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
