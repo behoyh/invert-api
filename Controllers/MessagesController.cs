@@ -43,7 +43,7 @@ namespace invert_api.Controllers
 
             if (result.Success) return Ok(result.Data);
 
-            else return NotFound(result.Error);
+            else return BadRequest(result.Error);
         }
 
         [HttpPost("add-list")]
@@ -53,7 +53,7 @@ namespace invert_api.Controllers
 
             if (result.Success) return Ok(true);
 
-            else return NotFound(result.Error);
+            else return BadRequest(result.Error);
         }
     }
 }

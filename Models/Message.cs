@@ -1,9 +1,13 @@
 ﻿using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace invert_api.Models
 {
     public class MESSAGE
     {
         public long ID { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public MessageType TYPE { get; set; }
         public bool ACTIVE { get; set; }
         public bool URGENT { get; set; }
