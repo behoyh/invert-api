@@ -30,7 +30,21 @@ namespace invert_api.Domains
 
             foreach (var m in loginMessages)
             {
-            
+                if (m.ENDTIME != null)
+                {
+                    if (m.ENDTIME > DateTime.Now)
+                    {
+                        continue;
+                    }
+                }
+
+                if (m.STARTTIME != null)
+                {
+                    if (m.STARTTIME < DateTime.Now)
+                    {
+                        continue;
+                    }
+                }
 
                 if(m.TYPE == LoginMessageType.Blocked)
                 {
@@ -40,7 +54,7 @@ namespace invert_api.Domains
                 {
 
                 }
-                if (m.TYPE == LoginMessageType.RequiredUpdate)
+                if (m.TYPE == LoginMessageType.Re)
                 {
 
                 }
@@ -49,7 +63,5 @@ namespace invert_api.Domains
 
             return new Response<LoginMessage>(message);
         }
-
-
     }
 }
