@@ -19,7 +19,7 @@ namespace invert_api.Repositories
         {
             bool success = false;
 
-            using (var context = InteractiveMessagesFactory.GetContext(_connectionString))
+            using (var context = DbContextFactory.GetContext(_connectionString))
             {
                 success = await context.UpdateAsync(message);
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using invert_api.Models;
@@ -17,7 +18,7 @@ namespace invert_api.Domains
 
         public async Task<Response<MessagesResponse>> GetMesssgesForUser(string uid, params MessageType[] messageTypes)
         {
-            if(!messageTypes.Any())
+            if (!messageTypes.Any())
             {
                 return new Response<MessagesResponse>("must include at least one type.");
             }
@@ -42,9 +43,9 @@ namespace invert_api.Domains
             response.Banner = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
             if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Popup = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
             if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Acknowledgment = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
-            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Marketing = messages.Where(x => x.TYPE == item).Take(3).ToList();
+            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Marketing = messages.Where(x => x.TYPE == item).OrderByDescending(x=>x.ENDDATE).Take(3).ToList();
             // Add more if needed.
-            
+
 
             var messagesResponse = response;
 
@@ -67,11 +68,11 @@ namespace invert_api.Domains
         {
             var combinedMessages = new List<MESSAGE>();
 
-           var targets = await _getMessagesRepository.GetTargetedMessagesForUserAsync(uid);
+            var targets = await _getMessagesRepository.GetTargetedMessagesForUserAsync(uid);
 
             if (!targets.Data.Any())
             {
-                return messages.Where(x => x.ISTARGETED == false);
+                return messages.Where(x => x.ISTARGETED == false && x.STARTDATE > DateTime.Now);
             }
 
             var targetedMessages = messages.Where(x => x.ISTARGETED && targets.Data.Where(y => y.MessageID == x.ID && !y.ACKNOWLEDGED).Any());
@@ -79,7 +80,7 @@ namespace invert_api.Domains
             combinedMessages.AddRange(messages.Where(x => x.ISTARGETED == false));
             combinedMessages.AddRange(targetedMessages);
 
-            return combinedMessages;
+            return combinedMessages.Where(x => x.STARTDATE > DateTime.Now);
         }
 
         private MESSAGE GetPriorityMessageOfType(IEnumerable<MESSAGE> messages)
@@ -88,7 +89,7 @@ namespace invert_api.Domains
 
             var targetedUrgent = messages.OrderByDescending(x => x.ENDDATE).Where(x => x.URGENT && x.ISTARGETED).FirstOrDefault();
 
-            if (targetedUrgent!=null)
+            if (targetedUrgent != null)
             {
                 return targetedUrgent;
             }
