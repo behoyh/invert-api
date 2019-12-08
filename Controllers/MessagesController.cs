@@ -10,14 +10,14 @@ namespace invert_api.Controllers
     [Route("api/[controller]")]
     public class MessagesController : Controller
     {
-        MessagesService _service;
+        private readonly MessagesService _service;
         public MessagesController(MessagesService service)
         {
             _service = service;
         }
 
         [HttpPost("user")]
-        public async Task<ObjectResult> GetAllMessages([FromBody]Request<string> uid)
+        public async Task<ObjectResult> GetMessages([FromBody]Request<string> uid)
         {
             var result = await _service.GetMessagesForUser(uid.Data);
 

@@ -7,6 +7,7 @@ namespace invert_api.Models.Request
         public string DeviceName { get; set; }
         public string OSVersion { get; set; }
         public string AppVersion { get; set; }
+        public string Platform { get; set; }
         public T Data { get; set; }
     }
 }

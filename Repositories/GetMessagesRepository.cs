@@ -20,10 +20,10 @@ namespace invert_api.Repositories
 
         public async Task<Response<IEnumerable<MESSAGE>>> GetAllMessagesAsync()
         {
-            var query = $"SELECT * FROM MESSAGES WHERE ACTIVE = 1 AND ENDDATE > @Date";
+            var query = $"SELECT * FROM MESSAGES WHERE ACTIVE = 1 AND ENDDATE > '@Date'";
 
             IEnumerable<MESSAGE> messages;
-            using (var context = InteractiveMessagesFactory.GetContext(_connectionString))
+            using (var context = DbContextFactory.GetContext(_connectionString))
             {
                 messages = await context.QueryAsync<MESSAGE>(query, new { Date = DateTime.Now });
             }
@@ -40,7 +40,7 @@ namespace invert_api.Repositories
         {
             IEnumerable<TARGET_MESSAGE> targetedMessages;
 
-            using (var context = InteractiveMessagesFactory.GetContext(_connectionString))
+            using (var context = DbContextFactory.GetContext(_connectionString))
             {
                 targetedMessages = await context.QueryAsync<TARGET_MESSAGE>("select UID = @Uid", new { Uid });
             }

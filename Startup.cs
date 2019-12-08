@@ -34,12 +34,20 @@ namespace invert_api
             });
             
             services.AddScoped(typeof(MessagesService), typeof(MessagesService));
+            services.AddScoped(typeof(LoginMessageService), typeof(LoginMessageService));
             services.AddScoped(typeof(GetMessages), typeof(GetMessages));
             services.AddScoped(typeof(AddOrUpdateMessage), typeof(AddOrUpdateMessage));
             services.AddScoped(typeof(GetMessagesRepository), typeof(GetMessagesRepository));
             services.AddScoped(typeof(UpdateMessageRepository), typeof(UpdateMessageRepository));
             services.AddScoped(typeof(InsertMessageRepository), typeof(InsertMessageRepository));
-            services.AddScoped(typeof(InteractiveMessagesFactory), typeof(InteractiveMessagesFactory));
+
+            services.AddScoped(typeof(GetLoginMessages), typeof(GetLoginMessages));
+            services.AddScoped(typeof(AddOrUpdateLoginMessage), typeof(AddOrUpdateMessage));
+            services.AddScoped(typeof(GetLoginMessageRepository), typeof(GetLoginMessageRepository));
+            services.AddScoped(typeof(UpdateLoginMessagesRepository), typeof(UpdateLoginMessagesRepository));
+            services.AddScoped(typeof(InsertLoginMessageRepository), typeof(InsertLoginMessageRepository));
+
+            services.AddScoped(typeof(DbContextFactory), typeof(DbContextFactory));
 
             services.AddCors(o => o.AddPolicy("dev", builder =>
             {

@@ -2,7 +2,7 @@
 
 namespace invert_api.Infrastructure
 {
-    public class InteractiveMessagesFactory
+    public class DbContextFactory
     {
         public static SqlConnection GetContext(string connectionString)
         {

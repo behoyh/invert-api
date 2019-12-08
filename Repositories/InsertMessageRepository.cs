@@ -20,7 +20,7 @@ namespace invert_api.Repositories
         {
             int result = 0;
 
-            using (var context = InteractiveMessagesFactory.GetContext(_connectionString))
+            using (var context = DbContextFactory.GetContext(_connectionString))
             {
                 result = await context.InsertAsync(message);
             }
@@ -37,7 +37,7 @@ namespace invert_api.Repositories
         {
             long result = 0;
 
-            using (var context = InteractiveMessagesFactory.GetContext(_connectionString))
+            using (var context = DbContextFactory.GetContext(_connectionString))
             {
                 result = await context.InsertAsync(targets);
             }
