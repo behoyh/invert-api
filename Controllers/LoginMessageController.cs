@@ -18,7 +18,7 @@ namespace invert_api.Controllers
         [HttpGet("all")]
         public async Task<ObjectResult> GetAllMessages()
         {
-            Response<LoginMessage> result = await _service.GetAllMessages();
+            Response<LoginMessageResponse> result = await _service.GetAllMessages();
 
             if (result.Success) return Ok(result.Data);
 

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using invert_api.Domains;
 using invert_api.Models;
@@ -16,14 +14,14 @@ namespace invert_api.Services
             _getLoginMessages = getLoginMessages;
         }
 
-        public async Task<Response<LoginMessage>> GetAllMessages()
+        public async Task<Response<LoginMessageResponse>> GetAllMessages()
         {
-            Response<LoginMessage> result = await _getLoginMessages.GetAllMessages();
+            Response<LoginMessageResponse> result = await _getLoginMessages.GetAllMessages();
 
             return result;
         }
 
-        public async Task<Response<int>> AddOrUpdateMessage(LoginMessage data)
+        public async Task<Response<int>> AddOrUpdateMessage(LoginMessage message)
         {
             throw new NotImplementedException();
         }
