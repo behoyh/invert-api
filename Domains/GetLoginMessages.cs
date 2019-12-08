@@ -15,16 +15,16 @@ namespace invert_api.Domains
             _messageRepository = messageRepository;
         }
 
-        public async Task<Response<LoginMessage>> GetAllMessages()
+        public async Task<Response<LoginMessageResponse>> GetAllMessages()
         {
             var result = await _messageRepository.GetLoginMessagesAsync();
 
             if (!result.Success)
             {
-                return new Response<LoginMessage>(result.Error);
+                return new Response<LoginMessageResponse>(result.Error);
             }
 
-            LoginMessage message = new LoginMessage();
+            LoginMessageResponse message = new LoginMessageResponse();
 
             var loginMessages = result.Data.ToList();
 
@@ -48,20 +48,25 @@ namespace invert_api.Domains
 
                 if(m.TYPE == LoginMessageType.Blocked)
                 {
-
+                    message.android.alert.blocking = m.ANDROID_BLOCKED;
+                    message.ios.alert.blocking = m.IOS_BLOCKED;
                 }
                 if (m.TYPE == LoginMessageType.OptionalUpdate)
                 {
-
+                    message.android.optionalUpdate.optionalVersion = m.ANDROID_VERSION;
+                    message.ios.optionalUpdate.optionalVersion = m.IOS_VERSION;
                 }
-                if (m.TYPE == LoginMessageType.Re)
+                if (m.TYPE == LoginMessageType.RequiredUpdate)
                 {
-
+                    message.android.requiredUpdate.minimumVersion = m.ANDROID_VERSION;
+                    message.ios.requiredUpdate.minimumVersion = m.IOS_VERSION;
                 }
+                message.android.alert.message = m.ANDROID_MESSAGE;
+                message.ios.alert.message = m.ANDROID_MESSAGE;
             }
 
 
-            return new Response<LoginMessage>(message);
+            return new Response<LoginMessageResponse>(message);
         }
     }
 }

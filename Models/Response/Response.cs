@@ -15,11 +15,6 @@ namespace invert_api.Models.Response
         }
         public bool Success { get; set; }
         public string Error { get; set; }
-
-        public static implicit operator Response(void v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public class Response<T>
@@ -40,10 +35,5 @@ namespace invert_api.Models.Response
         public bool Success { get; set; }
         public string Error { get; set; }
         public T Data { get; set; }
-
-        public static implicit operator Response<T>(void v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
