@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace invert_api.Controllers
 {
+    [Route("api/[controller]")]
     public class LoginMessageController : Controller
     {
         public LoginMessageService _service;
