@@ -2,6 +2,8 @@
 ## 🚧 under active development - please contribute! 🚧
 Invert-API is an advertising platform to communicate with customers inside an application, it can be used to set maintenence notices, request app updates, or display cross-sell opportunities.
 
+### [Docs](https://docs.invert.dev/)
+
 > Run docker-compose up or have a local SQL Server installed!
 
 Running invert-api will launch into a Swagger API doc, and a connceted SQL Server instance will automatically have relevant tables created. 
