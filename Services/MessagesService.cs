@@ -51,6 +51,18 @@ namespace invert_api.Services
             return new Response<List<MESSAGE>>(messages.Data);
         }
 
+        public async Task<Response<MESSAGE>> GetMessage(long messageId)
+        {
+            Response<MESSAGE> message = await _getMessages.GetMesssge(messageId);
+
+            if (!message.Success)
+            {
+                return new Response<MESSAGE>(message.Error);
+            }
+
+            return new Response<MESSAGE>(message.Data);
+        }
+
         public async Task<Response<long>> AddOrUpdateMessage(MESSAGE message)
         {
             var result = await _addOrUpdateMessage.AddOrUpdateAsync(message);

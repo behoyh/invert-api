@@ -52,6 +52,19 @@ namespace invert_api.Domains
             return new Response<MessagesResponse>(messagesResponse);
         }
 
+        public async Task<Response<MESSAGE>> GetMesssge(long messageId)
+        {
+            Response<MESSAGE> result = await _getMessagesRepository.GetMessageAsync(messageId);
+
+
+            if (!result.Success)
+            {
+                return new Response<MESSAGE>("Error Getting Messages");
+            }
+
+            return new Response<MESSAGE>(result.Data);
+        }
+
         public async Task<Response<List<MESSAGE>>> GetAllMesssges()
         {
             var result = await _getMessagesRepository.GetAllMessagesAsync();
