@@ -55,12 +55,12 @@ namespace invert_api.Repositories
 
         public async Task<Response<MESSAGE>> GetMessageAsync(long messageId)
         {
-            var query = $"SELECT * FROM MESSAGES WHERE ACTIVE = 1 && ID = @messageId";
+            var query = $"SELECT * FROM MESSAGES WHERE ACTIVE = 1 AND ID = @messageId";
 
-            IEnumerable<MESSAGE> messages;
+            MESSAGE messages;
             using (var context = DbContextFactory.GetContext(_connectionString))
             {
-                messages = await context.QueryAsync<MESSAGE>(query, new { Date = DateTime.Now });
+                messages = await context.QueryFirstAsync<MESSAGE>(query, new { messageId });
             }
 
             if (messages == null)
@@ -68,7 +68,7 @@ namespace invert_api.Repositories
                 return new Response<MESSAGE>("Query returned no results");
             }
 
-            return new Response<MESSAGE>(messages.FirstOrDefault());
+            return new Response<MESSAGE>(messages);
         }
     }
 }
