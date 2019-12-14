@@ -36,6 +36,16 @@ namespace invert_api.Controllers
             else return NotFound(result.Error);
         }
 
+        [HttpPost("select")]
+        public async Task<ObjectResult> GetMessage([FromBody] Request<long> request)
+        {
+            var result = await _service.GetMessage(request.Data);
+
+            if (result.Success) return Ok(result.Data);
+
+            else return NotFound(result.Error);
+        }
+
         [HttpPost("update")]
         public async Task<ObjectResult> AddOrUpdateMessage([FromBody]Request<MESSAGE> message)
         {
