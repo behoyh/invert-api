@@ -1,6 +1,6 @@
 # Invert API
 ### /api/LoginMessage/all
-
+> Get a list of all login messages.
 #### GET
 ##### Parameters
 
@@ -14,7 +14,7 @@
 | 200 | Success |
 
 ### /api/LoginMessage/update
-
+> Updates a login message.
 #### POST
 ##### Parameters
 
@@ -29,7 +29,7 @@
 | 200 | Success |
 
 ### /api/Messages/user
-
+> Gets an object for messages to be displayed to a particular user.
 #### POST
 ##### Parameters
 
@@ -44,7 +44,7 @@
 | 200 | Success |
 
 ### /api/Messages/all
-
+> Get a list of all marketing messages, for listing purposes.
 #### GET
 ##### Parameters
 
@@ -58,7 +58,7 @@
 | 200 | Success |
 
 ### /api/Messages/select
-
+> Returns a singular marketing message. Used to display and edit.
 #### POST
 ##### Parameters
 
@@ -73,7 +73,7 @@
 | 200 | Success |
 
 ### /api/Messages/update
-
+> Updates a marketing message.
 #### POST
 ##### Parameters
 
@@ -88,7 +88,7 @@
 | 200 | Success |
 
 ### /api/Messages/add-list
-
+> Adds a list of targeted users for a particular marketing message.
 #### POST
 ##### Parameters
 
@@ -154,7 +154,7 @@
 | osVersion | string |  | No |
 | appVersion | string |  | No |
 | platform | string |  | No |
-| data | string |  | No |
+| data | string |  | Yes |
 
 #### Request[Int64]
 
@@ -165,7 +165,7 @@
 | osVersion | string |  | No |
 | appVersion | string |  | No |
 | platform | string |  | No |
-| data | long |  | No |
+| data | long |  | Yes |
 
 #### Request[MESSAGE]
 
@@ -176,25 +176,25 @@
 | osVersion | string |  | No |
 | appVersion | string |  | No |
 | platform | string |  | No |
-| data | [MESSAGE](#message) |  | No |
+| data | [MESSAGE](#message) |  | Yes |
 
 #### MESSAGE
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long |  | No |
-| type | integer |  | No |
+| id | long |  | Yes |
+| type | integer |  | Yes |
 | active | boolean |  | No |
 | urgent | boolean |  | No |
 | istargeted | boolean |  | No |
-| title | string |  | No |
+| title | string |  | Yes |
 | body | string |  | No |
 | link | string |  | No |
 | image | string |  | No |
-| startdate | dateTime |  | No |
-| enddate | dateTime |  | No |
-| created | dateTime |  | No |
-| modified | dateTime |  | No |
+| startdate | dateTime |  | Yes |
+| enddate | dateTime |  | Yes |
+| created | dateTime |  | Yes |
+| modified | dateTime |  | Yes |
 
 #### Request[TargetRequest]
 
@@ -205,11 +205,11 @@
 | osVersion | string |  | No |
 | appVersion | string |  | No |
 | platform | string |  | No |
-| data | [TargetRequest](#targetrequest) |  | No |
+| data | [TargetRequest](#targetrequest) |  | Yes |
 
 #### TargetRequest
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| uids | [ string ] |  | No |
-| messageId | long |  | No |
+| uids | [ string ] |  | Yes |
+| messageId | long |  | Yes |
