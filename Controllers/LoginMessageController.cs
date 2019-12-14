@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace invert_api.Controllers
 {
+    [Route("api/[controller]")]
     public class LoginMessageController : Controller
     {
         public LoginMessageService _service;
@@ -18,7 +19,7 @@ namespace invert_api.Controllers
         [HttpGet("all")]
         public async Task<ObjectResult> GetAllMessages()
         {
-            Response<LoginMessage> result = await _service.GetAllMessages();
+            Response<LoginMessageResponse> result = await _service.GetAllMessages();
 
             if (result.Success) return Ok(result.Data);
 
