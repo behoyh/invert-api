@@ -25,6 +25,23 @@ namespace invert_api.Repositories
             IEnumerable<MESSAGE> messages;
             using (var context = DbContextFactory.GetContext(_connectionString))
             {
+                messages = await context.QueryAsync<MESSAGE>(query);
+            }
+
+            if (messages == null)
+            {
+                return new Response<IEnumerable<MESSAGE>>("Query returned no results");
+            }
+
+            return new Response<IEnumerable<MESSAGE>>(messages);
+        }
+        public async Task<Response<IEnumerable<MESSAGE>>> GetMessagesAsync()
+        {
+            var query = $"SELECT * FROM MESSAGES WHERE ACTIVE = 1 AND ENDDATE > @Date";
+
+            IEnumerable<MESSAGE> messages;
+            using (var context = DbContextFactory.GetContext(_connectionString))
+            {
                 messages = await context.QueryAsync<MESSAGE>(query, new { Date = DateTime.Now });
             }
 

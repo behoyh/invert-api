@@ -23,7 +23,7 @@ namespace invert_api.Domains
                 return new Response<MessagesResponse>("must include at least one type.");
             }
 
-            var result = await _getMessagesRepository.GetAllMessagesAsync();
+            var result = await _getMessagesRepository.GetMessagesAsync();
 
             if (!result.Success)
             {
