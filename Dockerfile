@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -17,4 +17,5 @@ RUN dotnet publish "invert-api.csproj" -c Development -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+RUN dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p crypticpassword
 ENTRYPOINT ["dotnet", "invert-api.dll"]
