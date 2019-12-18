@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.5'
 
 services:
   invert-ui:
@@ -23,4 +23,4 @@ services:
         - ACCEPT_EULA=Y
         - SA_PASSWORD=yourStrong(!)Password
     ports:
-        - 1433:1433
+        - 1433
