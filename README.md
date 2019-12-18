@@ -4,7 +4,9 @@ Invert-API is an advertising platform to communicate with customers inside an ap
 ### Docs
 Can be found [here](https://docs.invert.dev/).
 
-> Run docker-compose up or have a local SQL Server installed!
+> Run `docker-compose up`
+
+>  Navigate to https://localhost:44336/swagger
 
 Running invert-api will launch into a Swagger API doc, and a connceted SQL Server instance will automatically have relevant tables created. 
 
