@@ -5,6 +5,8 @@ Invert-API is an advertising platform to communicate with customers inside an ap
 Can be found [here](https://docs.invert.dev/).
 
 ### Quickstart
+> `git clone https://github.com/behoyh/invert-api.git`
+
 > Run `docker-compose up`
 
 >  Navigate to https://localhost:44336/swagger
