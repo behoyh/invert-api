@@ -9,6 +9,9 @@ Can be found [here](https://docs.invert.dev/).
 
 >  Navigate to https://localhost:44336/swagger
 
+### Marketing Samples
+* [Marketing Ad](https://gist.github.com/behoyh/8dd42e853ca2a5cf369dc9e0da7ad1d9) (web)
+
 Running invert-api will launch into a Swagger API doc, and a connceted SQL Server instance will automatically have relevant tables created. 
 
 There are four types of messages by default:
