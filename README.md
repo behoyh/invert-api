@@ -1,3 +1,5 @@
+![invert-logo](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/spaces%2F-Lvv5ZdlY65NsFAqv-z0%2Favatar.png?generation=1577373436605130&alt=media)
+
 # invert-api
 ## 🚧 under active development - please contribute! 🚧
 Invert-API is an advertising platform to communicate with customers inside an application, it can be used to set maintenence notices, request app updates, or display cross-sell opportunities.
