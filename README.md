@@ -2,7 +2,7 @@
 
 # invert-api
 ## 🚧 under active development - please contribute! 🚧
-Invert-API is an advertising platform to communicate with customers inside an application, it can be used to set maintenence notices, request app updates, or display cross-sell opportunities.
+Invert-API is an advertising platform to communicate with customers inside an application, it can be used to set maintenance notices, request app updates, or display cross-sell opportunities.
 ### Docs
 Can be found [here](https://docs.invert.dev/).
 
