@@ -1,5 +1,3 @@
-![invert-logo](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/spaces%2F-Lvv5ZdlY65NsFAqv-z0%2Favatar.png?generation=1577373436605130&alt=media)
-
 # invert-api
 ## 🚧 under active development - please contribute! 🚧
 Invert-API is an advertising platform to communicate with customers inside an application, it can be used to set maintenance notices, request app updates, or display cross-sell opportunities.
@@ -7,11 +5,11 @@ Invert-API is an advertising platform to communicate with customers inside an ap
 Can be found [here](https://docs.invert.dev/).
 
 ### Quickstart
-> `git clone https://github.com/behoyh/invert-api.git`
+`git clone https://github.com/behoyh/invert-api.git`
 
-> Run `docker-compose up`
+Run `docker-compose up`
 
->  Navigate to https://localhost:44336/swagger
+Navigate to [https://localhost:44336/swagger](https://localhost:44336/swagger)
 
 ### Marketing Samples
 * [Marketing Ad](https://gist.github.com/behoyh/8dd42e853ca2a5cf369dc9e0da7ad1d9) (web)
