@@ -1,5 +1,7 @@
+# Invert API
+
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Mentors4EDU/Images/master/invertapilogo.png">
+  <img src="https://raw.githubusercontent.com/Mentors4EDU/Images/master/spaces_-Lvv5ZdlY65NsFAqv-z0_avatar.png">
 </p>
 
 ## 🚧 under active development - please contribute! 🚧
