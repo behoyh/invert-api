@@ -1,4 +1,7 @@
-# invert-api
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Mentors4EDU/Images/master/invertapilogo.gif">
+</p>
+
 ## 🚧 under active development - please contribute! 🚧
 Invert-API is an advertising platform to communicate with customers inside an application, it can be used to set maintenance notices, request app updates, or display cross-sell opportunities.
 ### Docs
