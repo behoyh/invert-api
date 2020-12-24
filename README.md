@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Mentors4EDU/Images/master/invertapilogo.gif">
+  <img src="https://raw.githubusercontent.com/Mentors4EDU/Images/master/invertapilogo.png">
 </p>
 
 ## 🚧 under active development - please contribute! 🚧
