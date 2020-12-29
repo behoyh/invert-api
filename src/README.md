@@ -16,6 +16,11 @@ Run `docker-compose up`
 
 Navigate to [https://localhost:44336/swagger](https://localhost:44336/swagger)
 
+### Development
+It is recommended you create a appsettings.Local.json file in /src to put in your desired values for database connection strings and file storage.
+
+Otherwise you may inadvertently expose the connection string through a PR or the like. Be careful.
+
 ### Marketing Samples
 * [Marketing Ad](https://gist.github.com/behoyh/8dd42e853ca2a5cf369dc9e0da7ad1d9) (web)
 
