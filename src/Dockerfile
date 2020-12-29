@@ -17,6 +17,6 @@ RUN dotnet publish "invert-api.csproj" -c Development -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-RUN dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p crypticpassword
+RUN dotnet dev-certs https -ep /https/aspnetapp.pfx -p crypticpassword
 RUN dotnet dev-certs https
 ENTRYPOINT ["dotnet", "invert-api.dll"]
