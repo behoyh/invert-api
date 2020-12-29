@@ -15,7 +15,7 @@ services:
     ports:
         - 1433
   invert-api:
-    image: invert-api
+    image: behoyh/invert-api
     build:
         context: .
         dockerfile: ./Dockerfile
