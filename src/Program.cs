@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 
 namespace invert_api
-{
+{   
     public class Program
     {
         public static void Main(string[] args)

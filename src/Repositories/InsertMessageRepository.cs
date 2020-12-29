@@ -13,7 +13,7 @@ namespace invert_api.Repositories
         private readonly string _connectionString;
         public InsertMessageRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("Master");
+            _connectionString = configuration.GetConnectionString("Database");
         }
 
         public async Task<Response<long>> UploadMessageAsync(MESSAGE message)

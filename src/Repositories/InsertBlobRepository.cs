@@ -7,29 +7,28 @@ using Microsoft.Extensions.Configuration;
 
 namespace invert_api.Repositories
 {
-    public class UpdateMessageRepository
+    public class InsertBlobRepository
     {
         private readonly string _connectionString;
-        public UpdateMessageRepository(IConfiguration configuration)
+        public InsertBlobRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("Master");
+            _connectionString = configuration.GetConnectionString("Database");
         }
 
-        public async Task<Response<long>> UpdateMessageAsync(MESSAGE message)
+        public async Task<Response<long>> UploadBlobAsync(BLOB message)
         {
-            bool success = false;
-
+            int result = 0;
             using (var context = DbContextFactory.GetContext(_connectionString))
             {
-                success = await context.UpdateAsync(message);
+                result = await context.InsertAsync(message);
             }
 
-            if (!success)
+            if (result < 0)
             {
                 return new Response<long>("Insert Message Failed.");
             }
 
-            return new Response<long>(message.ID);
+            return new Response<long>(result);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace invert_api.Models
         public string TITLE { get; set; }
         public string BODY { get; set; }
         public string LINK { get; set; }
-        public string IMAGE { get; set; }
+        public int BLOB_ID { get; set; }
         public DateTime STARTDATE { get; set; }
         public DateTime ENDDATE { get; set; }
         public DateTime CREATED { get; set; }

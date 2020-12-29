@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json.Converters;
+
 namespace invert_api.Models
 {
     public enum MessageType

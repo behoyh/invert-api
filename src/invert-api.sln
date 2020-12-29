@@ -6,7 +6,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BCE692C1-85EF-4310-92DA-09B9826EBCF2}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		appsettings.Local.json = appsettings.Local.json
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-api.controllertests", "..\tests\invert-api.controllertests\invert-api.controllertests.csproj", "{C4B125C5-6299-4C13-8765-B499BC53193E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +21,9 @@ Global
 		{67C433F2-4A57-4F8F-9479-73F5CF385A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67C433F2-4A57-4F8F-9479-73F5CF385A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67C433F2-4A57-4F8F-9479-73F5CF385A91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4B125C5-6299-4C13-8765-B499BC53193E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B125C5-6299-4C13-8765-B499BC53193E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B125C5-6299-4C13-8765-B499BC53193E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B125C5-6299-4C13-8765-B499BC53193E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -363,3 +363,6 @@ MigrationBackup/
 bin/
 obj/
 docker-compose.dcproj
+
+# Local config
+*.Local.json
