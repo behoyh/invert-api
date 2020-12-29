@@ -366,3 +366,4 @@ docker-compose.dcproj
 
 # Local config
 *.Local.json
+*.DS_Store
