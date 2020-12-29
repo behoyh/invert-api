@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Text.Json.Serialization;
 using DbUp;
 using invert_api.Domains;
 using invert_api.Infrastructure;
@@ -28,6 +29,9 @@ namespace invert_api
         {
             services.AddMvc().AddMvcOptions((options)=> {
                 options.EnableEndpointRouting = false;
+            }).AddJsonOptions(opts =>
+            {
+                opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
 
             services.AddSwaggerGen(swagger =>
@@ -58,7 +62,6 @@ namespace invert_api
 
             //Infrastructure
             services.AddScoped(typeof(DbContextFactory), typeof(DbContextFactory));
-
 
             services.AddControllers(options => options.InputFormatters.Add(new ByteArrayInputFormatter()));
 

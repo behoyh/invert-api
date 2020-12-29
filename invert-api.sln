@@ -1,0 +1,33 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BCE692C1-85EF-4310-92DA-09B9826EBCF2}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-api", "src\invert-api.csproj", "{947A9749-4BFE-4251-B917-7229C429EBEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-api.controllertests", "tests\invert-api.controllertests\invert-api.controllertests.csproj", "{065A6FAB-6156-4F2A-86A7-1F505DADC8E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Local|Any CPU = Local|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{947A9749-4BFE-4251-B917-7229C429EBEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947A9749-4BFE-4251-B917-7229C429EBEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947A9749-4BFE-4251-B917-7229C429EBEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947A9749-4BFE-4251-B917-7229C429EBEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947A9749-4BFE-4251-B917-7229C429EBEC}.Local|Any CPU.ActiveCfg = Local|Any CPU
+		{947A9749-4BFE-4251-B917-7229C429EBEC}.Local|Any CPU.Build.0 = Local|Any CPU
+		{065A6FAB-6156-4F2A-86A7-1F505DADC8E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065A6FAB-6156-4F2A-86A7-1F505DADC8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065A6FAB-6156-4F2A-86A7-1F505DADC8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065A6FAB-6156-4F2A-86A7-1F505DADC8E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{065A6FAB-6156-4F2A-86A7-1F505DADC8E8}.Local|Any CPU.ActiveCfg = Release|Any CPU
+		{065A6FAB-6156-4F2A-86A7-1F505DADC8E8}.Local|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
