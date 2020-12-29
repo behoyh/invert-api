@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  invert-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+80
+      - ASPNETCORE_HTTPS_PORT=44361
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=crypticpassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dev_cert.pfx
+    ports:
+      - "28540:80"
+      - "44361:443"
+    volumes:
+      - ./conf.d/https/:/https/

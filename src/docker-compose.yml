@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  invert-ui:
+    image: behoyh/invert-ui
+    depends_on: 
+        - invert-api
+    ports:
+        - "8080:443"
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
+    environment:
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=yourStrong(!)Password
+    ports:
+        - 1433
+  invert-api:
+    image: behoyh/invert-api
+    build:
+        context: .
+        dockerfile: ./Dockerfile
+    depends_on:
+        - sql-server
