@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
 using invert_api.Domains;
 using invert_api.Models;
@@ -30,6 +29,11 @@ namespace invert_api.Services
             }
 
             return await _blob.SaveBlob(basePath,blob,type);
+        }
+
+        public async Task<byte[]> Get(long blob_id)
+        {
+            return await _blob.GetBlob(blob_id);
         }
     }
 }
