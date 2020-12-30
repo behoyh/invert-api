@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace invert_api.controllertests
 {
@@ -19,7 +21,7 @@ namespace invert_api.controllertests
         }
 
         [Fact]
-        public async Task Can_Upload_Image_Success()
+        public async Task Can_Upload_And_Get_Image_Success()
         {
             var client = _factory.CreateClient();
 
@@ -34,6 +36,25 @@ namespace invert_api.controllertests
             var content = await response.Content.ReadAsStringAsync();
 
             long.Parse(content).Should().BeGreaterThan(0);
+
+            await GetImage(long.Parse(content));
+        }
+
+        private async Task GetImage(long blobId)
+        {
+            var client = _factory.CreateClient();
+
+            var response = await client.GetAsync("/api/Blob?BLOB_ID=" + blobId);
+
+            response.IsSuccessStatusCode.Should().BeTrue();
+
+            var bytes = await response.Content.ReadAsByteArrayAsync();
+
+            bytes.Length.Should().BeGreaterThan(0);
+
+            ImageConverter converter = new ImageConverter();
+            Image image = (Image)converter.ConvertFrom(bytes);
+            image.Save(Environment.CurrentDirectory + "/avatar2.png", ImageFormat.Png);  
         }
     }
 }

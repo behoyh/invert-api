@@ -24,5 +24,13 @@ namespace invert_api.Controllers
 
             else return BadRequest(result.Error);
         }
+
+        [HttpGet]
+        public async Task<FileContentResult> GetBlob(long BLOB_ID)
+        {
+            var result = await _blobService.Get(BLOB_ID);
+
+            return File(result, "image/png");
+        }
     }
 }

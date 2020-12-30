@@ -59,6 +59,7 @@ namespace invert_api
             services.AddScoped(typeof(UpdateLoginMessagesRepository), typeof(UpdateLoginMessagesRepository));
             services.AddScoped(typeof(InsertLoginMessageRepository), typeof(InsertLoginMessageRepository));
             services.AddScoped(typeof(InsertBlobRepository), typeof(InsertBlobRepository));
+            services.AddScoped(typeof(GetBlobRepository), typeof(GetBlobRepository));
 
             //Infrastructure
             services.AddScoped(typeof(DbContextFactory), typeof(DbContextFactory));
