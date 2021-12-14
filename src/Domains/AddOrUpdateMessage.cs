@@ -23,7 +23,7 @@ namespace invert_api.Domains
         {
             long Id;
 
-            if (message.ID == 0)
+            if (message.Id == 0)
             {
                 var result = await _insertMessageRepository.UploadMessageAsync(message);
 
@@ -59,7 +59,7 @@ namespace invert_api.Domains
                 targetedMessages.Add(new TARGET_MESSAGE()
                 {
                     MessageID = targets.MessageId,
-                    UID = uid,
+                    Uid = uid,
                     Created = DateTime.Now,
                     Modified = DateTime.Now
                 });

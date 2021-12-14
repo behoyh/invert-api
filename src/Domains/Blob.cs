@@ -32,27 +32,27 @@ namespace invert_api.Domains
 
             var model = new BLOB()
             {
-                ACTIVE = true,
-                PATH = filepath,
-                NAME = name,
-                BLOB_TYPE = type,
-                CREATED = DateTime.Now,
-                MODIFIED = DateTime.Now
+                Active = true,
+                Path = filepath,
+                Name = name,
+                BlobType = type,
+                Created = DateTime.Now,
+                Modified = DateTime.Now
             };
 
             return await _insertBlob.UploadBlobAsync(model);
         }
 
-        public async Task<byte[]> GetBlob(long blob_id)
+        public async Task<byte[]> GetBlob(long blobid)
         {
-            var result = await _getBlob.GetBlobAsync(blob_id);
+            var result = await _getBlob.GetBlobAsync(blobid);
 
             if (!result.Success)
             {
                 return new byte[0];
             }
 
-            var filepath = result.Data.PATH;
+            var filepath = result.Data.Path;
 
             return await File.ReadAllBytesAsync(filepath);
         }

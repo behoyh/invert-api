@@ -29,7 +29,7 @@ namespace invert_api.Repositories
                 return new Response<long>("Insert Message Failed.");
             }
 
-            return new Response<long>(message.ID);
+            return new Response<long>(message.Id);
         }
     }
 }

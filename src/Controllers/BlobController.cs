@@ -26,9 +26,9 @@ namespace invert_api.Controllers
         }
 
         [HttpGet]
-        public async Task<FileContentResult> GetBlob(long BLOB_ID)
+        public async Task<FileContentResult> GetBlob(long blobid)
         {
-            var result = await _blobService.Get(BLOB_ID);
+            var result = await _blobService.Get(blobid);
 
             return File(result, "image/png");
         }

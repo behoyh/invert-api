@@ -3,12 +3,12 @@ namespace invert_api.Models
 {
     public class BLOB
     {
-        public int ID { get; set; }
-        public bool ACTIVE { get; set; }
-        public string PATH { get; set; }
-        public string NAME { get; set; }
-        public BlobType BLOB_TYPE { get; set; }
-        public DateTime CREATED { get; set; }
-        public DateTime MODIFIED { get; set; }
+        public int Id { get; set; }
+        public bool Active { get; set; }
+        public string Path { get; set; }
+        public string Name { get; set; }
+        public BlobType BlobType { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
     }
 }
