@@ -40,10 +40,10 @@ namespace invert_api.Domains
             var response = new MessagesResponse();
 
             var item = messageTypesList.Dequeue();
-            response.Banner = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
-            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Popup = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
-            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Acknowledgment = GetPriorityMessageOfType(messages.Where(x => x.TYPE == item));
-            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Marketing = messages.Where(x => x.TYPE == item).OrderByDescending(x=>x.ENDDATE).Take(3).ToList();
+            response.Banner = GetPriorityMessageOfType(messages.Where(x => x.Type == item));
+            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Popup = GetPriorityMessageOfType(messages.Where(x => x.Type == item));
+            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Acknowledgment = GetPriorityMessageOfType(messages.Where(x => x.Type == item));
+            if (messageTypesList.Count() != 0) item = messageTypesList.Dequeue(); response.Marketing = messages.Where(x => x.Type == item).OrderByDescending(x=>x.EndDate).Take(3).ToList();
             // Add more if needed.
 
 
@@ -85,36 +85,36 @@ namespace invert_api.Domains
 
             if (!targets.Data.Any())
             {
-                return messages.Where(x => x.ISTARGETED == false && x.STARTDATE > DateTime.Now);
+                return messages.Where(x => x.IsTargeted == false && x.StartDate > DateTime.Now);
             }
 
-            var targetedMessages = messages.Where(x => x.ISTARGETED && targets.Data.Where(y => y.MessageID == x.ID && !y.ACKNOWLEDGED).Any());
+            var targetedMessages = messages.Where(x => x.IsTargeted && targets.Data.Where(y => y.MessageID == x.Id && !y.Acknowledged).Any());
 
-            combinedMessages.AddRange(messages.Where(x => x.ISTARGETED == false));
+            combinedMessages.AddRange(messages.Where(x => x.IsTargeted == false));
             combinedMessages.AddRange(targetedMessages);
 
-            return combinedMessages.Where(x => x.STARTDATE > DateTime.Now);
+            return combinedMessages.Where(x => x.StartDate > DateTime.Now);
         }
 
         private MESSAGE GetPriorityMessageOfType(IEnumerable<MESSAGE> messages)
         {
             // Priority Queue: standard->targeted->urgent->targeted urgent
 
-            var targetedUrgent = messages.OrderByDescending(x => x.ENDDATE).Where(x => x.URGENT && x.ISTARGETED).FirstOrDefault();
+            var targetedUrgent = messages.OrderByDescending(x => x.EndDate).Where(x => x.Urgent && x.IsTargeted).FirstOrDefault();
 
             if (targetedUrgent != null)
             {
                 return targetedUrgent;
             }
 
-            var urgent = messages.OrderByDescending(x => x.ENDDATE).Where(x => x.URGENT).FirstOrDefault();
+            var urgent = messages.OrderByDescending(x => x.EndDate).Where(x => x.Urgent).FirstOrDefault();
 
             if (urgent != null)
             {
                 return urgent;
             }
 
-            var targeted = messages.OrderByDescending(x => x.ENDDATE).Where(x => x.ISTARGETED).FirstOrDefault();
+            var targeted = messages.OrderByDescending(x => x.EndDate).Where(x => x.IsTargeted).FirstOrDefault();
 
             if (targeted != null)
             {

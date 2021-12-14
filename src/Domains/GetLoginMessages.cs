@@ -30,17 +30,17 @@ namespace invert_api.Domains
 
             foreach (var m in loginMessages)
             {
-                if (m.ENDTIME != null)
+                if (m.EndTime != null)
                 {
-                    if (m.ENDTIME > DateTime.Now)
+                    if (m.EndTime > DateTime.Now)
                     {
                         continue;
                     }
                 }
 
-                if (m.STARTTIME != null)
+                if (m.StartTime != null)
                 {
-                    if (m.STARTTIME < DateTime.Now)
+                    if (m.StartTime < DateTime.Now)
                     {
                         continue;
                     }
@@ -48,21 +48,21 @@ namespace invert_api.Domains
 
                 if(m.TYPE == LoginMessageType.Blocked)
                 {
-                    message.android.alert.blocking = m.ANDROID_BLOCKED;
-                    message.ios.alert.blocking = m.IOS_BLOCKED;
+                    message.android.alert.blocking = m.Android_Blocked;
+                    message.ios.alert.blocking = m.Ios_Blocked;
                 }
                 if (m.TYPE == LoginMessageType.OptionalUpdate)
                 {
-                    message.android.optionalUpdate.optionalVersion = m.ANDROID_VERSION;
-                    message.ios.optionalUpdate.optionalVersion = m.IOS_VERSION;
+                    message.android.optionalUpdate.optionalVersion = m.AndroidVersion;
+                    message.ios.optionalUpdate.optionalVersion = m.IosVersion;
                 }
                 if (m.TYPE == LoginMessageType.RequiredUpdate)
                 {
-                    message.android.requiredUpdate.minimumVersion = m.ANDROID_VERSION;
-                    message.ios.requiredUpdate.minimumVersion = m.IOS_VERSION;
+                    message.android.requiredUpdate.minimumVersion = m.AndroidVersion;
+                    message.ios.requiredUpdate.minimumVersion = m.IosVersion;
                 }
-                message.android.alert.message = m.ANDROID_MESSAGE;
-                message.ios.alert.message = m.ANDROID_MESSAGE;
+                message.android.alert.message = m.AndroidMessage;
+                message.ios.alert.message = m.AndroidMessage;
             }
 
 

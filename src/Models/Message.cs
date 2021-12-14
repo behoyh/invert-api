@@ -5,19 +5,19 @@ namespace invert_api.Models
 {
     public class MESSAGE
     {
-        public long ID { get; set; }
+        public long Id { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public MessageType TYPE { get; set; }
-        public bool ACTIVE { get; set; }
-        public bool URGENT { get; set; }
-        public bool ISTARGETED { get; set; }
-        public string TITLE { get; set; }
-        public string BODY { get; set; }
-        public string LINK { get; set; }
-        public long BLOB_ID { get; set; }
-        public DateTime STARTDATE { get; set; }
-        public DateTime ENDDATE { get; set; }
-        public DateTime CREATED { get; set; }
-        public DateTime MODIFIED { get; set; }
+        public MessageType Type { get; set; }
+        public bool Active { get; set; }
+        public bool Urgent { get; set; }
+        public bool IsTargeted { get; set; }
+        public string Title { get; set; }
+        public string Body { get; set; }
+        public string Link { get; set; }
+        public long BlobId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
     }
 }

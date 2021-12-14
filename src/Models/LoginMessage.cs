@@ -25,19 +25,19 @@ namespace invert_api.Models
 
     public class LOGIN_MESSAGE
     {
-        public long ID { get; set; }
-        public bool ACTIVE { get; set; }
-        public string ANDROID_VERSION { get; set; }
-        public string ANDROID_MESSAGE { get; set; }
-        public string IOS_VERSION { get; set; }
-        public string IOS_MESSAGE { get; set; }
+        public long Id { get; set; }
+        public bool Active { get; set; }
+        public string AndroidVersion { get; set; }
+        public string AndroidMessage { get; set; }
+        public string IosVersion { get; set; }
+        public string IosMessage { get; set; }
         public LoginMessageType TYPE { get; set; }
-        public bool IOS_BLOCKED { get; set; }
-        public bool ANDROID_BLOCKED { get; set; }
-        public DateTime? STARTTIME { get; set; }
-        public DateTime? ENDTIME { get; set; }
-        public DateTime CREATED { get; set; }
-        public DateTime MODIFIED { get; set; }
+        public bool Ios_Blocked { get; set; }
+        public bool Android_Blocked { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
     }
 
     public enum LoginMessageType

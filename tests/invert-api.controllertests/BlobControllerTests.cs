@@ -44,7 +44,7 @@ namespace invert_api.controllertests
         {
             var client = _factory.CreateClient();
 
-            var response = await client.GetAsync("/api/Blob?BLOB_ID=" + blobId);
+            var response = await client.GetAsync("/api/Blob?blobid=" + blobId);
 
             response.IsSuccessStatusCode.Should().BeTrue();
 

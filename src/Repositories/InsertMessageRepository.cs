@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dapper.Contrib.Extensions;
 using invert_api.Infrastructure;
@@ -22,7 +23,14 @@ namespace invert_api.Repositories
 
             using (var context = DbContextFactory.GetContext(_connectionString))
             {
-                result = await context.InsertAsync(message);
+                try
+                {
+                    result = await context.InsertAsync(message);
+                }
+                catch(Exception ex)
+                {
+                    return new Response<long>(ex.Message);
+                }
             }
 
             if (result < 0)

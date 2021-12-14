@@ -31,9 +31,9 @@ namespace invert_api.Services
             return await _blob.SaveBlob(basePath,blob,type);
         }
 
-        public async Task<byte[]> Get(long blob_id)
+        public async Task<byte[]> Get(long blobid)
         {
-            return await _blob.GetBlob(blob_id);
+            return await _blob.GetBlob(blobid);
         }
     }
 }

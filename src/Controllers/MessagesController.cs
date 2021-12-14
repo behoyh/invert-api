@@ -48,6 +48,10 @@ namespace invert_api.Controllers
         [HttpPost("update")]
         public async Task<ObjectResult> AddOrUpdateMessage([FromBody]Request<MESSAGE> message)
         {
+            if (message == default)
+            {
+                return BadRequest("Message is not specified.");
+            }
             var result = await _service.AddOrUpdateMessage(message.Data);
 
             if (result.Success) return Ok(result.Data);
