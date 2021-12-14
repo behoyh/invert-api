@@ -21,6 +21,8 @@ It is recommended you create a appsettings.Local.json file in /src to put in you
 
 Otherwise you may inadvertently expose the connection string through a PR or the like. Be careful.
 
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/behoyh/invert-api)
+
 ### Marketing Samples
 * [Marketing Ad](https://gist.github.com/behoyh/8dd42e853ca2a5cf369dc9e0da7ad1d9) (web)
 
